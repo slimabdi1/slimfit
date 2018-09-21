@@ -8,6 +8,10 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import {WebcamComponent} from './webcam/webcam/webcam.component';
 import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';
+import { GuidlinesComponent } from './guidlines/guidlines.component';
+import { SettingsComponent } from './settings/settings.component';
+import { PicturesComponent } from './pictures/pictures.component';
+import { ConfirmComponent } from './confirm/confirm.component';
 @NgModule({
   imports: [
     ContentRoutingModule,
@@ -25,7 +29,7 @@ import { BrowserModule } from '@angular/platform-browser';
           animationDuration: 300,
         })
   ],
-  declarations: [ContentComponent],
+  declarations: [ContentComponent, GuidlinesComponent, SettingsComponent, PicturesComponent, ConfirmComponent],
   providers: [WebcamComponent],
 })
 

@@ -1,0 +1,13 @@
+
+<div class="snapshot" *ngIf="webcamImage">
+  <h2>Nice one!</h2>
+  <ul>
+    <li *ngFor="let a of captures">
+        <img [src]="a.imageAsDataUrl"/>
+    </li>
+    </ul>
+</div>
+    <button class="actionBtn" (click)=" save_image();">save_image</button>
+
+    
+

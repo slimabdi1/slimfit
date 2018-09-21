@@ -1,19 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit ,Output ,EventEmitter} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {WebcamImage} from "./webcam/domain/webcam-image";
 import {WebcamUtil} from "./webcam/util/webcam.util";
 import {WebcamInitError} from "./webcam/domain/webcam-init-error";
 import {WebcamComponent} from "./webcam/webcam/webcam.component"
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
-
+  clickActive:Boolean = false;
+  user = { active: true };
 // toggle webcam on/off
 showWebcam = false;
+
 slect:any =[];
  allowCameraSwitch = true;
  multipleWebcamsAvailable = false;
@@ -29,6 +31,21 @@ interval;
 videosrc:any;
 percent : number = 0;
 captures : Array<any> =[] ;
+counter : number = 0;
+i : number =0
+id :any
+@Output() onCategorySelected = new EventEmitter<number>();
+
+public activeClass: string = "nonactive"
+
+  categories: any[] = [
+     1 ,
+   2 ,
+    3,
+  4 
+];
+
+
  videoOptions: MediaTrackConstraints = {
   //width: {ideal: 1024},
   //height: {ideal: 576}
@@ -43,7 +60,8 @@ private trigger: Subject<void> = new Subject<void>();
 // switch to next / previous / specific webcam; true/false: forward/backwards, string: deviceId
 private nextWebcam: Subject<boolean|string> = new Subject<boolean|string>();
 
-constructor( private webcam :WebcamComponent) {}
+constructor( private webcam :WebcamComponent , private router :Router) {}
+
 
  ngOnInit() {
 
@@ -52,6 +70,20 @@ constructor( private webcam :WebcamComponent) {}
       this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
       
     });
+}
+
+next(){
+  this.counter +=1 ;
+
+  console.log (this.categories[this.i])
+
+  if (this.counter === this.categories[this.i]) {
+    this.user.active = false;
+    this.i +=1 ;
+} else {
+    this.user.active = true;
+}
+
 }
 
  triggerSnapshot() {

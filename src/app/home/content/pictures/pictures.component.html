@@ -1,0 +1,19 @@
+
+    <div style="    width: 500px;
+    height: 375px;
+    background: #000;
+    /* float: none; */
+    float: none;
+    display: block;
+    margin: 0 auto;">
+    <webcam [height]="height" [width]="width" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
+            [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+            [videoOptions]="videoOptions"
+            (cameraSwitched)="cameraWasSwitched($event)"
+            (initError)="handleInitError($event)"
+    >
+  </webcam>
+
+    <button class="actionBtn" (click)="triggerSnapshot();" [disabled]="registerForm">Take A Snapshot</button>
+
+</div>

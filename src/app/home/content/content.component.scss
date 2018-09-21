@@ -27,3 +27,39 @@
     left: 41%;
     bottom: -28px;
   }
+
+  .numberCircle {
+    border-radius: 50%;
+    width: 37px;
+    height: 37px;
+    padding: 8px;
+    background: #fff;
+    border: 2px solid black;
+    color: black;
+    text-align: center;
+    font: 19px Arial, sans-serif;
+    display: inline-block;
+    margin: 2%;
+}
+
+.button_disable{
+  border-radius: 50%;
+  width: 37px;
+  height: 37px;
+  padding: 8px;
+  background: black;
+  border: 2px solid black;
+  color: white;
+  text-align: center;
+  font: 19px Arial, sans-serif;
+  display: inline-block;
+  margin: 2%;
+}
+
+.larger {
+    font-size: 16px
+}
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
