@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CommonModule } from '@angular/common'; //<-- This one 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 @NgModule({
   declarations: [
     AppComponent,

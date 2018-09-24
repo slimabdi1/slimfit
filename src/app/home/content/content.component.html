@@ -2,17 +2,29 @@
 <div class="row">
     <div class="col-xs-3 col-centered">
 
-        <div class="numberCircle" *ngFor="let c of categories" [ngClass]="{'btn-danger':user.active, 'btn-success':!user.active}">{{c}}</div>
+        <div class="numberCircle" *ngFor="let item of items"  [ngClass]="{'btn btn-dark':item.active, 'btn-success':!item.active}">{{item.number}}</div>
+        
        
-       
+<div class="page">
+  <app-guidlines *ngIf="currentPage == 0"></app-guidlines>
+  <app-settings *ngIf="currentPage == 1"></app-settings>
+  <app-pictures *ngIf="currentPage == 2"></app-pictures>
+  <app-confirm *ngIf="currentPage == 3"></app-confirm>
+</div>
+<div class="d-flex flex-row">
+  <div class="trade-75">
+      <button type="button" class="btn trade-back" (click)="changePage(-1)"></button>
+  </div>
+   <div class="trade-10">
+      <button type="button" class="btn trade-next" (click)="changePage(1)"></button>
+  </div>
+</div>
+        
     </div>
 </div>
 
 
-<div class="col-md-6"><button
-  class="btn btn-outline-success"
-  (click)="next()">back</button>
-</div>
+
 
 
 

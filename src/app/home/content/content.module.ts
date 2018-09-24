@@ -12,6 +12,7 @@ import { GuidlinesComponent } from './guidlines/guidlines.component';
 import { SettingsComponent } from './settings/settings.component';
 import { PicturesComponent } from './pictures/pictures.component';
 import { ConfirmComponent } from './confirm/confirm.component';
+
 @NgModule({
   imports: [
     ContentRoutingModule,

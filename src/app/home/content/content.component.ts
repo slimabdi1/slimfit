@@ -13,6 +13,7 @@ import {Router} from '@angular/router';
 export class ContentComponent implements OnInit {
   clickActive:Boolean = false;
   user = { active: true };
+  
 // toggle webcam on/off
 showWebcam = false;
 
@@ -32,19 +33,15 @@ videosrc:any;
 percent : number = 0;
 captures : Array<any> =[] ;
 counter : number = 0;
-i : number =0
-id :any
+items =[
+  {number :1, active: true },
+  {number :2, active: true },
+  {number :3, active: true },
+  {number :4, active: true }
+]
 @Output() onCategorySelected = new EventEmitter<number>();
 
 public activeClass: string = "nonactive"
-
-  categories: any[] = [
-     1 ,
-   2 ,
-    3,
-  4 
-];
-
 
  videoOptions: MediaTrackConstraints = {
   //width: {ideal: 1024},
@@ -64,7 +61,7 @@ constructor( private webcam :WebcamComponent , private router :Router) {}
 
 
  ngOnInit() {
-
+  this.items[this.currentPage].active =false;
   WebcamUtil.getAvailableVideoInputs()
     .then((mediaDevices: MediaDeviceInfo[]) => {
       this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
@@ -72,18 +69,20 @@ constructor( private webcam :WebcamComponent , private router :Router) {}
     });
 }
 
-next(){
-  this.counter +=1 ;
-
-  console.log (this.categories[this.i])
-
-  if (this.counter === this.categories[this.i]) {
-    this.user.active = false;
-    this.i +=1 ;
-} else {
-    this.user.active = true;
-}
-
+public currentPage = 0;
+public i = 0;
+public changePage(delta: number): void {
+    // some checks
+    this.items[0].active =false
+          this.currentPage += delta;
+        if(delta === 1) {
+         this.items[this.currentPage].active =false
+        }
+     if(delta === -1) {
+      this.items[this.currentPage+1].active =true
+     
+     }
+     console.log(this.items[this.currentPage].active)
 }
 
  triggerSnapshot() {
